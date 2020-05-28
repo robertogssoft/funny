@@ -1,6 +1,5 @@
-const primary = '#4a81e8';
-const claro = '#eaf3fa';
-const obscuro = '#30333d';
-const gray = '#e5f3fb';
+const primary = '#F1F8FE';
+const claro = '#F68D2D';
+const obscuro = '#000000';
 
-export {primary, claro, obscuro, gray};
+export {primary, claro, obscuro};

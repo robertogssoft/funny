@@ -1,22 +1,19 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import Button from './src/components/buttons';
+import {View, StyleSheet, StatusBar} from 'react-native';
 
 import Keyboard from './src/containers/keyboard';
 import Input from './src/components/input';
+import Buttons from './src/containers/buttons';
 import {ValueProvider} from './src/context/ValueContext';
+import {claro, gray} from './src/assets/styles';
 
-/*
-<View style={styles.row}>
-          <Button name="volume-up" />
-          <Button name="play" />
-        </View>
-*/
 export default function App() {
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor={claro} barStyle="dark-content" />
       <ValueProvider>
         <Input />
+        <Buttons />
         <Keyboard />
       </ValueProvider>
     </View>
@@ -28,6 +25,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: claro,
   },
   row: {
     flexDirection: 'row',
