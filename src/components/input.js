@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {StyleSheet, Text} from 'react-native';
-import {claro, obscuro, primary} from '../assets/styles';
+import {obscuro, primary} from '../assets/styles';
 import {ValueContext} from '../context/ValueContext';
 
 export default function Input() {

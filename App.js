@@ -5,7 +5,7 @@ import Keyboard from './src/containers/keyboard';
 import Input from './src/components/input';
 import Buttons from './src/containers/buttons';
 import {ValueProvider} from './src/context/ValueContext';
-import {claro, gray} from './src/assets/styles';
+import {claro} from './src/assets/styles';
 
 export default function App() {
   return (

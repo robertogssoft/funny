@@ -9,7 +9,7 @@ export default function Buttons() {
       <Button name="play" />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   row: {
