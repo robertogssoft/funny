@@ -1,4 +1,4 @@
-package com.funny;
+package com.funnybetitogh;
 
 import android.app.Application;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.funny;
+package com.funnybetitogh;
 
 import com.facebook.react.ReactActivity;
 

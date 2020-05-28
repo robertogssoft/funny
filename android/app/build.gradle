@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.funny"
+        applicationId "com.funnybetitogh"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
