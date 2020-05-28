@@ -1,33 +1,33 @@
 import React from 'react';
-import {TouchableOpacity, StyleSheet} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import {claro, obscuro} from '../assets/styles';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default function Button({name, onPress}) {
+export default function Letter({icon, onPress}) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Icon name={name} color={obscuro} size={25} />
+      <Icon name={icon} color={claro} size={wp(6)} />
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: obscuro,
+    width: wp(10),
+    height: wp(13),
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: claro,
-    height: 50,
-    width: 50,
-    paddingHorizontal: 4,
+    borderRadius: 10,
     shadowColor: obscuro,
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
-    borderRadius: 90,
-    marginHorizontal: 5,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
   },
 });
