@@ -3,6 +3,7 @@ import {StyleSheet, View, Alert} from 'react-native';
 import Sound from 'react-native-sound';
 import Letter from '../components/letter';
 import Option from '../components/option';
+import Space from '../components/space';
 import {obscuro, primary} from '../assets/styles';
 import {ValueContext} from '../context/ValueContext';
 
@@ -104,6 +105,9 @@ export default function Keyboard() {
         <Letter l={lt[12][mayus]} onPress={() => click(12)} />
         <Option icon="arrow-left" onPress={del} />
       </View>
+      <View style={styles.space}>
+        <Space />
+      </View>
     </View>
   );
 }
@@ -128,5 +132,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginVertical: 10,
+  },
+  space: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
