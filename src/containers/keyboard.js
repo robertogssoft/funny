@@ -22,7 +22,7 @@ const lt = [
   ['L', 'l', require('./../assets/sound/l.mp3')], //11
   ['M', 'm', require('./../assets/sound/m.mp3')], //12
   ['N', 'n', require('./../assets/sound/n.mp3')], //13
-  ['Ñ', 'ñ', require('./../assets/sound/ñ.mp3')], //14
+  ['Ñ', 'ñ', require('./../assets/sound/enie.mp3')], //14
   ['O', 'o', require('./../assets/sound/o.mp3')], //15
   ['P', 'p', require('./../assets/sound/p.mp3')], //16
   ['Q', 'q', require('./../assets/sound/q.mp3')], //17
