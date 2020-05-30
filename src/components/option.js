@@ -4,9 +4,9 @@ import {claro, obscuro} from '../assets/styles';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default function Letter({icon, onPress}) {
+export default function Letter({icon, onPress, style}) {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity style={[styles.container, style]} onPress={onPress}>
       <Icon name={icon} color={claro} size={wp(6)} />
     </TouchableOpacity>
   );

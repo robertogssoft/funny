@@ -15,16 +15,16 @@ export default function Buttons() {
   }, [reader]);
 
   const initTts = async () => {
-    const voices = await Tts.voices();
+    //const voices = await Tts.voices();
     //console.log(voices);
-    if (voices && voices.length > 0) {
-      try {
-        await Tts.setDefaultLanguage('es-MX');
-      } catch (err) {
-        //console.log('setDefaultLanguage error ', err);
-      }
-      setReader('initialized');
+    //if (voices && voices.length > 0) {
+    try {
+      await Tts.setDefaultLanguage('es-MX');
+    } catch (err) {
+      //console.log('setDefaultLanguage error ', err);
     }
+    setReader('initialized');
+    //}
   };
 
   const play = async () => {

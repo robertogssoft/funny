@@ -107,6 +107,11 @@ export default function Keyboard() {
       </View>
       <View style={styles.space}>
         <Space />
+        <Option
+          icon="level-down"
+          onPress={() => add('\n')}
+          style={styles.enter}
+        />
       </View>
     </View>
   );
@@ -134,7 +139,11 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   space: {
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
+  },
+  enter: {
+    transform: [{rotate: '90deg'}],
   },
 });
