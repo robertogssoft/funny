@@ -1,10 +1,11 @@
-import React, {createContext, useState} from 'react';
+import React, { createContext, useState } from 'react';
 
 let ValueContext = createContext();
-let {Provider, Consumer} = ValueContext;
+let { Provider, Consumer } = ValueContext;
 
-function ValueProvider({children}) {
+function ValueProvider({ children }) {
   let [value, setValue] = useState('');
+  let [output, setOutput] = useState('');
 
   const del = () => {
     let str = value;
@@ -18,7 +19,15 @@ function ValueProvider({children}) {
     setValue(str);
   };
 
-  return <Provider value={{value, add, del}}>{children}</Provider>;
+  const addOutput = (words) => {
+    setOutput(words);
+  }
+
+  const deleteOutput = () => {
+    setOutput('');
+  }
+
+  return <Provider value={{ value, add, del, output, addOutput, deleteOutput }}>{children}</Provider>;
 }
 
-export {ValueProvider, Consumer as ValueCostumer, ValueContext};
+export { ValueProvider, Consumer as ValueCostumer, ValueContext };
