@@ -46,23 +46,53 @@ export default function Keyboard() {
     playSound(lt[index][2]);
   };
 
+  const tilde = (letra, m, index) => {
+    add(mayus === 1 ? letra : m);
+    playSound(lt[index][2]);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>
         <Letter l={lt[17][mayus]} onPress={() => click(17)} />
         <Letter l={lt[23][mayus]} onPress={() => click(23)} />
-        <Letter l={lt[4][mayus]} onPress={() => click(4)} />
+        <Letter
+          l={lt[4][mayus]}
+          onPress={() => click(4)}
+          tilde="é"
+          onLongPress={() => tilde('é', 'É', 4)}
+        />
         <Letter l={lt[18][mayus]} onPress={() => click(18)} />
         <Letter l={lt[20][mayus]} onPress={() => click(20)} />
         <Letter l={lt[25][mayus]} onPress={() => click(25)} />
-        <Letter l={lt[21][mayus]} onPress={() => click(21)} />
-        <Letter l={lt[8][mayus]} onPress={() => click(8)} />
-        <Letter l={lt[15][mayus]} onPress={() => click(15)} />
+        <Letter
+          l={lt[21][mayus]}
+          onPress={() => click(21)}
+          tilde="ú"
+          onLongPress={() => tilde('ú', 'Ú', 21)}
+        />
+        <Letter
+          l={lt[8][mayus]}
+          onPress={() => click(8)}
+          tilde="í"
+          onLongPress={() => tilde('í', 'Í', 8)}
+        />
+        <Letter
+          l={lt[15][mayus]}
+          onPress={() => click(15)}
+          tilde="ó"
+          onLongPress={() => tilde('ó', 'Ó', 15)}
+        />
         <Letter l={lt[16][mayus]} onPress={() => click(16)} />
       </View>
 
       <View style={styles.row}>
-        <Letter l={lt[0][mayus]} onPress={() => click(0)} />
+        <Letter
+          l={lt[0][mayus]}
+          onPress={() => click(0)}
+          tilde="á"
+          onLongPress={() => tilde('á', 'Á', 0)}
+        />
         <Letter l={lt[19][mayus]} onPress={() => click(19)} />
         <Letter l={lt[3][mayus]} onPress={() => click(3)} />
         <Letter l={lt[5][mayus]} onPress={() => click(5)} />
