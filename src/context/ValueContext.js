@@ -4,7 +4,8 @@ let ValueContext = createContext();
 let {Provider, Consumer} = ValueContext;
 
 function ValueProvider({children}) {
-  let [value, setValue] = useState('');
+  const [value, setValue] = useState('');
+  const [toolTalk, setToolTalk] = useState(false);
 
   const del = () => {
     let str = value;
@@ -18,7 +19,11 @@ function ValueProvider({children}) {
     setValue(str);
   };
 
-  return <Provider value={{value, add, del}}>{children}</Provider>;
+  return (
+    <Provider value={{value, add, del, toolTalk, setToolTalk}}>
+      {children}
+    </Provider>
+  );
 }
 
 export {ValueProvider, Consumer as ValueCostumer, ValueContext};

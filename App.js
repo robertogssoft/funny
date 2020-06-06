@@ -4,6 +4,8 @@ import {View, StyleSheet, StatusBar} from 'react-native';
 import Keyboard from './src/containers/keyboard';
 import Input from './src/components/input';
 import Buttons from './src/containers/buttons';
+import Configs from './src/containers/configs';
+import Talking from './src/containers/talking';
 import {ValueProvider} from './src/context/ValueContext';
 import {claro} from './src/assets/styles';
 
@@ -12,6 +14,8 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar backgroundColor={claro} barStyle="dark-content" />
       <ValueProvider>
+        <Configs />
+        <Talking />
         <Input />
         <Buttons />
         <Keyboard />

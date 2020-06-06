@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {StyleSheet, Text, Platform} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import {obscuro, primary} from '../assets/styles';
 import {ValueContext} from '../context/ValueContext';
 
@@ -35,13 +35,5 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginVertical: 10,
     paddingHorizontal: 10,
-    ...Platform.select({
-      ios: {
-        marginTop: 50,
-      },
-      default: {
-        marginTop: 10,
-      },
-    }),
   },
 });
