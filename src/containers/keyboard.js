@@ -1,11 +1,11 @@
 import React, {useState, useContext} from 'react';
 import {StyleSheet, View, Alert} from 'react-native';
-import Sound from 'react-native-sound';
 import Letter from '../components/letter';
 import Option from '../components/option';
 import Space from '../components/space';
 import {obscuro, primary} from '../assets/styles';
 import {ValueContext} from '../context/ValueContext';
+import playSound from '../commonfunctions/playSound';
 
 const lt = [
   ['A', 'a', require('./../assets/sound/a.mp3')], //0
@@ -44,21 +44,6 @@ export default function Keyboard() {
   const click = (index) => {
     add(lt[index][mayus]);
     playSound(lt[index][2]);
-  };
-
-  const playSound = (audio) => {
-    const callback = (error, sound) => {
-      if (error) {
-        Alert.alert('error', error.message);
-        return;
-      }
-      audio.onPrepared && audio.onPrepared(sound);
-      sound.play(() => {
-        sound.release();
-      });
-    };
-
-    const sound = new Sound(audio, (error) => callback(error, sound));
   };
 
   return (

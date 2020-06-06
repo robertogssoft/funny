@@ -5,6 +5,7 @@ let {Provider, Consumer} = ValueContext;
 
 function ValueProvider({children}) {
   const [value, setValue] = useState('');
+  const [output, setOutput] = useState('');
   const [toolTalk, setToolTalk] = useState(false);
 
   const del = () => {
@@ -19,8 +20,26 @@ function ValueProvider({children}) {
     setValue(str);
   };
 
+  const addOutput = (words) => {
+    setOutput(words);
+  };
+
+  const deleteOutput = () => {
+    setOutput('');
+  };
+
   return (
-    <Provider value={{value, add, del, toolTalk, setToolTalk}}>
+    <Provider
+      value={{
+        value,
+        add,
+        del,
+        output,
+        addOutput,
+        deleteOutput,
+        toolTalk,
+        setToolTalk,
+      }}>
       {children}
     </Provider>
   );

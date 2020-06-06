@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, StatusBar} from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 
 import Keyboard from './src/containers/keyboard';
 import Input from './src/components/input';
@@ -17,7 +17,7 @@ export default function App() {
         <Configs />
         <Talking />
         <Input />
-        <Buttons />
+        <Buttons buttonsToShow={['play']} />
         <Keyboard />
       </ValueProvider>
     </View>

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   StyleSheet,
@@ -11,33 +11,11 @@ import {
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {primary, obscuro, claro} from '../assets/styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Tts from 'react-native-tts';
 import {ValueContext} from './../context/ValueContext';
 
 export default function Configs() {
   const {toolTalk, setToolTalk} = useContext(ValueContext);
   const [modalVisible, setModalVisible] = useState(false);
-  const [reader, setReader] = useState('initiliazing');
-  const [voices, setVoices] = useState([]);
-
-  useEffect(() => {
-    if (reader === 'initiliazing') {
-      initTts();
-    }
-  }, [reader]);
-
-  const initTts = async () => {
-    const v = await Tts.voices();
-    setVoices(v);
-    //if (voices && voices.length > 0) {
-    /*try {
-      await Tts.setDefaultLanguage('es-MX');
-    } catch (err) {
-      //console.log('setDefaultLanguage error ', err);
-    }*/
-    setReader('initialized');
-    //}
-  };
 
   return (
     <View style={styles.container}>
