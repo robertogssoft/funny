@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {StyleSheet, View, Alert} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import Letter from '../components/letter';
 import Option from '../components/option';
 import Space from '../components/space';

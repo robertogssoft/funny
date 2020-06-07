@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {heightPercentageToDP as hp, widthPercentageToDP} from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {primary, obscuro} from '../assets/styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {ValueContext} from './../context/ValueContext';
@@ -66,11 +66,20 @@ export default function Configs() {
       {toolTalk ? (
         <View style={styles.globo}>
           <TouchableOpacity style={styles.button} onPress={recordVoice}>
-            <Icon
-              name={recording ? 'stop' : 'microphone'}
-              color={recording ? 'red' : obscuro}
-              size={recording ? 30 : 25}
-            />
+            {texto === '' ? (
+              <Icon
+                name={recording ? 'stop' : 'microphone'}
+                color={recording ? 'red' : obscuro}
+                size={recording ? 35 : 25}
+              />
+            ) : (
+              <Icon
+                name="trash"
+                color={obscuro}
+                size={25}
+                onPress={() => setTexto('')}
+              />
+            )}
           </TouchableOpacity>
           <Text style={styles.texto}>{texto}</Text>
         </View>
