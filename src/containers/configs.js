@@ -80,8 +80,8 @@ export default function Configs() {
                 value={toolTalk}
               />
               <View>
-                <Text> ¿Cómo se escribe?</Text>
-                <Text style={styles.smallText}> Herramienta de dictado</Text>
+                <Text> Herramienta de dictado</Text>
+                <Text style={styles.smallText}> ¿Cómo se escribe?</Text>
               </View>
             </View>
 

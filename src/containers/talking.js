@@ -66,20 +66,11 @@ export default function Configs() {
       {toolTalk ? (
         <View style={styles.globo}>
           <TouchableOpacity style={styles.button} onPress={recordVoice}>
-            {texto === '' ? (
-              <Icon
-                name={recording ? 'stop' : 'microphone'}
-                color={recording ? 'red' : obscuro}
-                size={recording ? 35 : 25}
-              />
-            ) : (
-              <Icon
-                name="trash"
-                color={obscuro}
-                size={25}
-                onPress={() => setTexto('')}
-              />
-            )}
+            <Icon
+              name={recording ? 'stop' : 'microphone'}
+              color={recording ? 'red' : obscuro}
+              size={recording ? 35 : 25}
+            />
           </TouchableOpacity>
           <Text style={styles.texto}>{texto}</Text>
         </View>
