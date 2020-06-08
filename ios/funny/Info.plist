@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Utilizaremos el micrófono para que puedas hacer dictado de texto</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Reconoceremos tu voz para traducir lo que digas a texto</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -43,6 +39,10 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Utilizaremos el micrófono para que puedas hacer dictado de texto</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Reconoceremos tu voz para traducir lo que digas a texto</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
