@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   StyleSheet,
@@ -7,52 +7,65 @@ import {
   Modal,
   TouchableOpacity,
   Switch,
+  FlatList,
+  TextInput,
 } from 'react-native';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 import {primary, obscuro, claro} from '../assets/styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Tts from 'react-native-tts';
 import {ValueContext} from './../context/ValueContext';
 
 export default function Configs() {
-  const {toolTalk, setToolTalk} = useContext(ValueContext);
+  const {toolTalk, setToolTalk, languages, idioma, setIdioma} = useContext(
+    ValueContext,
+  );
   const [modalVisible, setModalVisible] = useState(false);
-  const [reader, setReader] = useState('initiliazing');
-  const [voices, setVoices] = useState([]);
+  const [listVisible, setListVisible] = useState(false);
+  const [value, onChangeText] = useState('');
+  const [data, setData] = useState(languages);
 
-  useEffect(() => {
-    if (reader === 'initiliazing') {
-      initTts();
-    }
-  }, [reader]);
+  const keyExtractor = (item, index) => index.toString();
 
-  const initTts = async () => {
-    const v = await Tts.voices();
-    setVoices(v);
-    //if (voices && voices.length > 0) {
-    /*try {
-      await Tts.setDefaultLanguage('es-MX');
-    } catch (err) {
-      //console.log('setDefaultLanguage error ', err);
-    }*/
-    setReader('initialized');
-    //}
+  const renderItem = ({item}) => (
+    <TouchableOpacity
+      onPress={() => setIdioma(item.language)}
+      style={styles.itemlist}>
+      <Text>{item.language}</Text>
+      <Text style={styles.green}>
+        {item.networkConnectionRequired ? 'Internet' : null}
+      </Text>
+    </TouchableOpacity>
+  );
+
+  const filterArrayObjects = (text) => {
+    onChangeText(text);
+    const busqueda = text.toLowerCase();
+    const resultados = languages.filter(
+      (v) => v.language.indexOf(busqueda) >= 0,
+    );
+    setData(resultados);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text} onPress={() => setModalVisible(true)}>
-        Config
-      </Text>
+      <TouchableOpacity
+        onPress={() => setModalVisible(true)}
+        style={styles.touch}>
+        <Icon name="cogs" color={primary} size={20} />
+      </TouchableOpacity>
 
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <View style={styles.right}>
+              <Text>Herramientas de configuración</Text>
               <TouchableOpacity onPress={() => setModalVisible(false)}>
                 <Icon name="times" color={obscuro} size={25} />
               </TouchableOpacity>
@@ -67,10 +80,40 @@ export default function Configs() {
                 value={toolTalk}
               />
               <View>
-                <Text> ¿Cómo se escribe?</Text>
-                <Text style={styles.smallText}> Herramienta de dictado</Text>
+                <Text> Herramienta de dictado</Text>
+                <Text style={styles.smallText}> ¿Cómo se escribe?</Text>
               </View>
             </View>
+
+            <View style={styles.divider} />
+
+            <TouchableOpacity
+              style={[styles.row, styles.space]}
+              onPress={() => setListVisible(!listVisible)}>
+              <Text>Idioma: </Text>
+              <Text>{idioma}</Text>
+              <Icon name="chevron-down" color={obscuro} size={15} />
+            </TouchableOpacity>
+            {listVisible ? (
+              <View>
+                <TextInput
+                  style={styles.textInput}
+                  inlineImageLeft="search_icon"
+                  placeholder="Search"
+                  onChangeText={(text) => filterArrayObjects(text)}
+                  value={value}
+                />
+                <FlatList
+                  showsVerticalScrollIndicator={false}
+                  keyExtractor={keyExtractor}
+                  data={data}
+                  renderItem={renderItem}
+                  style={styles.list}
+                />
+              </View>
+            ) : null}
+
+            <View style={styles.divider} />
           </View>
         </View>
       </Modal>
@@ -81,6 +124,7 @@ export default function Configs() {
 const styles = StyleSheet.create({
   container: {
     width: '95%',
+    alignItems: 'flex-end',
     ...Platform.select({
       ios: {
         marginTop: 50,
@@ -92,11 +136,12 @@ const styles = StyleSheet.create({
   },
   green: {
     color: claro,
-  },
-  text: {
     fontSize: wp(3),
-    color: primary,
-    fontWeight: 'bold',
+  },
+  touch: {
+    width: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   smallText: {
     fontSize: wp(2),
@@ -107,6 +152,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
   },
   modalView: {
     margin: 20,
@@ -124,7 +170,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   right: {
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     width: '100%',
     marginBottom: 20,
     flexDirection: 'row',
@@ -139,5 +185,33 @@ const styles = StyleSheet.create({
   select: {
     width: '100%',
     height: 40,
+  },
+  divider: {
+    borderTopColor: 'black',
+    borderTopWidth: 1,
+  },
+  space: {
+    justifyContent: 'space-between',
+  },
+  list: {
+    height: hp(15),
+  },
+  textInput: {
+    borderColor: 'gray',
+    borderWidth: 1,
+  },
+  itemlist: {
+    justifyContent: 'center',
+    paddingLeft: 10,
+    shadowColor: obscuro,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
+    marginVertical: 3,
+    paddingVertical: 3,
   },
 });

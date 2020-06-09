@@ -1,11 +1,15 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {claro, obscuro} from '../assets/styles';
+import {claro, obscuro, primary} from '../assets/styles';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-export default function Letter({l, onPress}) {
+export default function Letter({l, onPress, tilde, onLongPress}) {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={onPress}
+      onLongPress={onLongPress}>
+      {tilde ? <Text style={styles.tilde}>{tilde}</Text> : null}
       <Text style={styles.letra}>{l}</Text>
     </TouchableOpacity>
   );
@@ -31,5 +35,12 @@ const styles = StyleSheet.create({
   },
   letra: {
     fontSize: wp(6),
+  },
+  tilde: {
+    position: 'absolute',
+    top: 2,
+    right: 2,
+    fontSize: wp(4),
+    color: primary,
   },
 });

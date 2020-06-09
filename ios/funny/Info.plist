@@ -39,6 +39,10 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Utilizaremos el micrófono para que puedas hacer dictado de texto</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Reconoceremos tu voz para traducir lo que digas a texto</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>

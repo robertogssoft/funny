@@ -5,26 +5,25 @@ import {ValueContext} from '../context/ValueContext';
 import Button from '../components/button';
 
 export default function Buttons() {
-  const {value} = useContext(ValueContext);
+  const {value, idioma} = useContext(ValueContext);
   const [reader, setReader] = useState('initiliazing');
 
   useEffect(() => {
     if (reader === 'initiliazing') {
       initTts();
     }
-  }, [reader]);
+    if (idioma) {
+      initTts();
+    }
+  }, [reader, idioma]);
 
   const initTts = async () => {
-    //const voices = await Tts.voices();
-    //console.log(voices);
-    //if (voices && voices.length > 0) {
     try {
-      await Tts.setDefaultLanguage('es-MX');
+      await Tts.setDefaultLanguage(idioma);
     } catch (err) {
       //console.log('setDefaultLanguage error ', err);
     }
     setReader('initialized');
-    //}
   };
 
   const play = async () => {
@@ -33,8 +32,6 @@ export default function Buttons() {
       Tts.speak(value);
     }
   };
-
-  //<Button name="volume-up" onPress={() => console.log('volume')} />
 
   return (
     <View style={styles.row}>

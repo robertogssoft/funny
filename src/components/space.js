@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   space: {
-    fontSize: 7,
+    fontSize: wp(2),
     color: primary,
   },
 });
