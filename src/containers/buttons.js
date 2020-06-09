@@ -17,8 +17,6 @@ export default function Buttons() {
     }
   }, [reader, idioma]);
 
-  console.log('idioma', idioma);
-
   const initTts = async () => {
     try {
       await Tts.setDefaultLanguage(idioma);

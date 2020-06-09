@@ -82,6 +82,14 @@ export default function Configs() {
 const styles = StyleSheet.create({
   container: {
     width: '95%',
+    shadowColor: obscuro,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
   },
   globo: {
     marginTop: 10,
